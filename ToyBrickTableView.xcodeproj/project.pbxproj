@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04107602264B743F00875135 /* ToyBrickTableView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 041075FF264B743F00875135 /* ToyBrickTableView.podspec */; };
+		04107603264B743F00875135 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 04107600264B743F00875135 /* LICENSE */; };
+		04107604264B743F00875135 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04107601264B743F00875135 /* README.md */; };
 		0435DCEA2643D5A7002DEA05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCE92643D5A7002DEA05 /* AppDelegate.m */; };
 		0435DCED2643D5A7002DEA05 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCEC2643D5A7002DEA05 /* SceneDelegate.m */; };
 		0435DCF02643D5A7002DEA05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCEF2643D5A7002DEA05 /* ViewController.m */; };
@@ -25,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041075FE264B716E00875135 /* ToyBrickTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToyBrickTableView.h; sourceTree = "<group>"; };
+		041075FF264B743F00875135 /* ToyBrickTableView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToyBrickTableView.podspec; sourceTree = "<group>"; };
+		04107600264B743F00875135 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		04107601264B743F00875135 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0435DCE52643D5A7002DEA05 /* ToyBrickTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyBrickTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0435DCE82643D5A7002DEA05 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0435DCE92643D5A7002DEA05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +78,9 @@
 		0435DCDC2643D5A7002DEA05 = {
 			isa = PBXGroup;
 			children = (
+				04107600264B743F00875135 /* LICENSE */,
+				04107601264B743F00875135 /* README.md */,
+				041075FF264B743F00875135 /* ToyBrickTableView.podspec */,
 				0435DCE72643D5A7002DEA05 /* ToyBrickTableView */,
 				0435DCE62643D5A7002DEA05 /* Products */,
 				97B754C04EE0A6FDF4C15C3D /* Pods */,
@@ -108,6 +118,7 @@
 		0435DD012643D5B8002DEA05 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				041075FE264B716E00875135 /* ToyBrickTableView.h */,
 				0435DD022643D6E3002DEA05 /* TBTableView.h */,
 				0435DD032643D6E3002DEA05 /* TBTableView.m */,
 				0435DD052643D762002DEA05 /* TBTableViewCell.h */,
@@ -201,9 +212,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04107604264B743F00875135 /* README.md in Resources */,
 				0435DCF82643D5A9002DEA05 /* LaunchScreen.storyboard in Resources */,
 				0435DCF52643D5A9002DEA05 /* Assets.xcassets in Resources */,
 				0435DCF32643D5A7002DEA05 /* Main.storyboard in Resources */,
+				04107602264B743F00875135 /* ToyBrickTableView.podspec in Resources */,
+				04107603264B743F00875135 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -436,6 +451,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
