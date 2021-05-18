@@ -47,7 +47,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.contentView.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.splitLineView];
     }
     return self;
@@ -58,8 +58,11 @@
     CGFloat height = [dict tb_floatForKey:@"height"];
     CGFloat leftEdge = [dict tb_floatForKey:@"leftEdge"];
     CGFloat rightEdge = [dict tb_floatForKey:@"rightEdge"];
+    if ([bgColor isEqual:[UIColor clearColor]]) {
+        self.contentView.backgroundColor = [UIColor clearColor];
+    }
     self.splitLineView.backgroundColor = bgColor;
-    self.splitLineView.frame = CGRectMake(leftEdge, 0, CGRectGetWidth([UIScreen mainScreen].bounds) - leftEdge - rightEdge, height);
+    self.splitLineView.frame = CGRectMake(leftEdge, 0, CGRectGetWidth(self.contentView.frame) - leftEdge - rightEdge, height);
 }
 
 @end
