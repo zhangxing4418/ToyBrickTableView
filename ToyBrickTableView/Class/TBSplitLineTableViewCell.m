@@ -62,7 +62,9 @@
         self.contentView.backgroundColor = [UIColor clearColor];
     }
     self.splitLineView.backgroundColor = bgColor;
-    self.splitLineView.frame = CGRectMake(leftEdge, 0, CGRectGetWidth(self.contentView.frame) - leftEdge - rightEdge, height);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.splitLineView.frame = CGRectMake(leftEdge, 0, CGRectGetWidth(self.contentView.frame) - leftEdge - rightEdge, height);
+    });
 }
 
 @end
