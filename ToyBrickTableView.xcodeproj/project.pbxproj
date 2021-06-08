@@ -11,9 +11,7 @@
 		04107603264B743F00875135 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 04107600264B743F00875135 /* LICENSE */; };
 		04107604264B743F00875135 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04107601264B743F00875135 /* README.md */; };
 		0435DCEA2643D5A7002DEA05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCE92643D5A7002DEA05 /* AppDelegate.m */; };
-		0435DCED2643D5A7002DEA05 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCEC2643D5A7002DEA05 /* SceneDelegate.m */; };
 		0435DCF02643D5A7002DEA05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCEF2643D5A7002DEA05 /* ViewController.m */; };
-		0435DCF32643D5A7002DEA05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0435DCF12643D5A7002DEA05 /* Main.storyboard */; };
 		0435DCF52643D5A9002DEA05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0435DCF42643D5A9002DEA05 /* Assets.xcassets */; };
 		0435DCF82643D5A9002DEA05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0435DCF62643D5A9002DEA05 /* LaunchScreen.storyboard */; };
 		0435DCFB2643D5A9002DEA05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DCFA2643D5A9002DEA05 /* main.m */; };
@@ -35,11 +33,8 @@
 		0435DCE52643D5A7002DEA05 /* ToyBrickTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyBrickTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0435DCE82643D5A7002DEA05 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0435DCE92643D5A7002DEA05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0435DCEB2643D5A7002DEA05 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		0435DCEC2643D5A7002DEA05 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		0435DCEE2643D5A7002DEA05 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0435DCEF2643D5A7002DEA05 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0435DCF22643D5A7002DEA05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0435DCF42643D5A9002DEA05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0435DCF72643D5A9002DEA05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0435DCF92643D5A9002DEA05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,11 +97,8 @@
 				0435DD012643D5B8002DEA05 /* Class */,
 				0435DCE82643D5A7002DEA05 /* AppDelegate.h */,
 				0435DCE92643D5A7002DEA05 /* AppDelegate.m */,
-				0435DCEB2643D5A7002DEA05 /* SceneDelegate.h */,
-				0435DCEC2643D5A7002DEA05 /* SceneDelegate.m */,
 				0435DCEE2643D5A7002DEA05 /* ViewController.h */,
 				0435DCEF2643D5A7002DEA05 /* ViewController.m */,
-				0435DCF12643D5A7002DEA05 /* Main.storyboard */,
 				0435DCF42643D5A9002DEA05 /* Assets.xcassets */,
 				0435DCF62643D5A9002DEA05 /* LaunchScreen.storyboard */,
 				0435DCF92643D5A9002DEA05 /* Info.plist */,
@@ -215,7 +207,6 @@
 				04107604264B743F00875135 /* README.md in Resources */,
 				0435DCF82643D5A9002DEA05 /* LaunchScreen.storyboard in Resources */,
 				0435DCF52643D5A9002DEA05 /* Assets.xcassets in Resources */,
-				0435DCF32643D5A7002DEA05 /* Main.storyboard in Resources */,
 				04107602264B743F00875135 /* ToyBrickTableView.podspec in Resources */,
 				04107603264B743F00875135 /* LICENSE in Resources */,
 			);
@@ -276,7 +267,6 @@
 				0435DD0D2643D810002DEA05 /* NSArray+TBSafe.m in Sources */,
 				0435DCFB2643D5A9002DEA05 /* main.m in Sources */,
 				0435DD162643DE44002DEA05 /* TBSplitLineTableViewCell.m in Sources */,
-				0435DCED2643D5A7002DEA05 /* SceneDelegate.m in Sources */,
 				0435DD102643D85E002DEA05 /* NSMutableDictionary+TableViewCellAction.m in Sources */,
 				0435DD072643D762002DEA05 /* TBTableViewCell.m in Sources */,
 				0435DD0A2643D799002DEA05 /* NSMutableDictionary+TBSafe.m in Sources */,
@@ -287,14 +277,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0435DCF12643D5A7002DEA05 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0435DCF22643D5A7002DEA05 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0435DCF62643D5A9002DEA05 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -357,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -410,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -427,14 +409,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y9Y9PS929;
 				INFOPLIST_FILE = ToyBrickTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -447,14 +430,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y9Y9PS929;
 				INFOPLIST_FILE = ToyBrickTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

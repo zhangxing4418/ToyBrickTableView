@@ -85,7 +85,11 @@
         }] addAction:^{
             NSLog(@"这是第一项");
         }]];
-        [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+        if (@available(iOS 13.0, *)) {
+            [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+        } else {
+            [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+        }
     }
 }
 

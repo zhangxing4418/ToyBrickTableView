@@ -124,16 +124,32 @@
             return nil;
             
         case TableEmptyTypeTitle:
-            return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            if (@available(iOS 13.0, *)) {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            } else {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor groupTableViewBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            }
             
         case TableEmptyTypeTitleButton:
-            return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            if (@available(iOS 13.0, *)) {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            } else {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor groupTableViewBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            }
             
         case TableEmptyTypeImageTitle:
-            return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            if (@available(iOS 13.0, *)) {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            } else {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor groupTableViewBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            }
             
         case TableEmptyTypeImageTitleButton:
-            return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            if (@available(iOS 13.0, *)) {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor systemGroupedBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            } else {
+                return self.emptyTableAttributedTitle ? self.emptyTableAttributedTitle : [[NSAttributedString alloc] initWithString:self.emptyTableTitle ? self.emptyTableTitle : @"出错误了!" attributes:@{NSForegroundColorAttributeName : [UIColor groupTableViewBackgroundColor], NSFontAttributeName : [UIFont systemFontOfSize:15]}];
+            }
             
         default:
             return nil;
