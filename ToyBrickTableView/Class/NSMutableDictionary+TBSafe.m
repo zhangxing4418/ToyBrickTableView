@@ -15,6 +15,18 @@
     }
 }
 
+- (void)tb_setString:(NSString *)i forKey:(NSString *)key {
+    [self setValue:i forKey:key];
+}
+
+- (void)tb_setBool:(BOOL)i forKey:(NSString *)key {
+    self[key] = @(i);
+}
+
+- (void)tb_setInteger:(NSInteger)i forKey:(NSString *)key {
+    self[key] = @(i);
+}
+
 - (void)tb_setFloat:(float)i forKey:(NSString *)key {
     self[key] = @(i);
 }
@@ -31,6 +43,53 @@
         return [value stringValue];
     }
     return nil;
+}
+
+- (NSArray *)tb_arrayForKey:(id)key {
+    id value = [self objectForKey:key];
+    if (value == nil || value == [NSNull null]) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSArray class]]) {
+        return value;
+    }
+    return nil;
+}
+
+- (NSDictionary *)tb_dictionaryForKey:(id)key {
+    id value = [self objectForKey:key];
+    if (value == nil || value == [NSNull null]) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSDictionary class]]) {
+        return value;
+    }
+    return nil;
+}
+
+- (BOOL)tb_boolForKey:(id)key {
+    id value = [self objectForKey:key];
+    if (value == nil || value == [NSNull null]) {
+        return NO;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [value boolValue];
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        return [value boolValue];
+    }
+    return NO;
+}
+
+- (NSInteger)tb_integerForKey:(id)key {
+    id value = [self objectForKey:key];
+    if (value == nil || value == [NSNull null]) {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+        return [value integerValue];
+    }
+    return 0;
 }
 
 - (float)tb_floatForKey:(id)key {

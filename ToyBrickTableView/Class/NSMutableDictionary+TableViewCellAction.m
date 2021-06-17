@@ -10,6 +10,7 @@
 @interface Action : NSObject
 
 @property (nonatomic, copy) void (^actionBlock)(void);
+@property (nonatomic, copy) void (^actionIndexBlock)(NSInteger index);
 
 @end
 
@@ -25,10 +26,21 @@
     return self;
 }
 
+- (NSMutableDictionary *)addIndexAction:(void (^) (NSInteger index))actionIndexBlock {
+    Action *action = [[Action alloc] init];
+    action.actionIndexBlock = actionIndexBlock;
+    [self setObject:action forKey:@"actionIndexBlock"];
+    return self;
+}
+
 - (void)executeAction {
     Action *action = [self objectForKey:@"actionBlock"];
+    Action *indexAction = [self objectForKey:@"actionIndexBlock"];
     if ([action isKindOfClass:[Action class]] && action.actionBlock) {
         action.actionBlock();
+    }
+    if ([indexAction isKindOfClass:[Action class]] && indexAction.actionIndexBlock) {
+        indexAction.actionIndexBlock([[self objectForKey:@"index"] integerValue]);
     }
 }
 

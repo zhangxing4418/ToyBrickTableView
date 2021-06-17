@@ -23,23 +23,25 @@
 }
 
 + (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict {
-    return [TBTableViewCell cellRowHeight];
+    return [self cellRowHeight];
 }
 
 + (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    return [TBTableViewCell cellRowHeightForDict:dict];
+    [dict tb_setInteger:index forKey:@"index"];
+    return [self cellRowHeightForDict:dict];
 }
 
 + (CGFloat)cellRowEstimatedHeight {
-    return [TBTableViewCell cellRowHeight];
+    return [self cellRowHeight];
 }
 
 + (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict {
-    return [TBTableViewCell cellRowEstimatedHeight];
+    return [self cellRowEstimatedHeight];
 }
 
 + (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    return [TBTableViewCell cellRowEstimatedHeightForDict:dict];
+    [dict tb_setInteger:index forKey:@"index"];
+    return [self cellRowEstimatedHeightForDict:dict];
 }
 
 + (NSString *)dictKeyOfClassName {
@@ -47,7 +49,7 @@
 }
 
 + (Class)tableViewCellClassOfDict:(NSMutableDictionary *)dict {
-    NSString *className = [dict tb_stringForKey:[TBTableViewCell dictKeyOfClassName]];
+    NSString *className = [dict tb_stringForKey:[self dictKeyOfClassName]];
     if (className && className.length > 0) {
         return NSClassFromString(className);
     }
@@ -55,7 +57,7 @@
 }
 
 + (NSMutableDictionary *)buildCellDict:(Class)class {
-    return [NSMutableDictionary dictionaryWithObject:NSStringFromClass(class) forKey:[TBTableViewCell dictKeyOfClassName]];
+    return [NSMutableDictionary dictionaryWithObject:NSStringFromClass(class) forKey:[self dictKeyOfClassName]];
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -66,11 +68,11 @@
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict {
-    NSLog(@"基类updateCellWithDict:");
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    NSLog(@"基类updateCellWithDict:index:");
+    [dict tb_setInteger:index forKey:@"index"];
+    [self updateCellWithDict:dict];
 }
 
 @end

@@ -22,6 +22,7 @@
 		0435DD102643D85E002DEA05 /* NSMutableDictionary+TableViewCellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DD0F2643D85E002DEA05 /* NSMutableDictionary+TableViewCellAction.m */; };
 		0435DD132643DD03002DEA05 /* TBValue1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DD122643DD03002DEA05 /* TBValue1TableViewCell.m */; };
 		0435DD162643DE44002DEA05 /* TBSplitLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435DD152643DE44002DEA05 /* TBSplitLineTableViewCell.m */; };
+		04D448FB267B753500A2BEB1 /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D448FA267B753500A2BEB1 /* IndexTableViewCell.m */; };
 		F45F3064FBEAC3F02A7616D3 /* libPods-ToyBrickTableView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8EFC1AD15AA3E9A4FF9F84 /* libPods-ToyBrickTableView.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		0435DD122643DD03002DEA05 /* TBValue1TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBValue1TableViewCell.m; sourceTree = "<group>"; };
 		0435DD142643DE44002DEA05 /* TBSplitLineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBSplitLineTableViewCell.h; sourceTree = "<group>"; };
 		0435DD152643DE44002DEA05 /* TBSplitLineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBSplitLineTableViewCell.m; sourceTree = "<group>"; };
+		04D448F9267B753500A2BEB1 /* IndexTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell.h; sourceTree = "<group>"; };
+		04D448FA267B753500A2BEB1 /* IndexTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell.m; sourceTree = "<group>"; };
 		4B8EFC1AD15AA3E9A4FF9F84 /* libPods-ToyBrickTableView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToyBrickTableView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D9FEDDDB3A6141DA653798 /* Pods-ToyBrickTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToyBrickTableView.debug.xcconfig"; path = "Target Support Files/Pods-ToyBrickTableView/Pods-ToyBrickTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		E6C2591494012A4DD73D4DD1 /* Pods-ToyBrickTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToyBrickTableView.release.xcconfig"; path = "Target Support Files/Pods-ToyBrickTableView/Pods-ToyBrickTableView.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 				0435DCE92643D5A7002DEA05 /* AppDelegate.m */,
 				0435DCEE2643D5A7002DEA05 /* ViewController.h */,
 				0435DCEF2643D5A7002DEA05 /* ViewController.m */,
+				04D448F9267B753500A2BEB1 /* IndexTableViewCell.h */,
+				04D448FA267B753500A2BEB1 /* IndexTableViewCell.m */,
 				0435DCF42643D5A9002DEA05 /* Assets.xcassets */,
 				0435DCF62643D5A9002DEA05 /* LaunchScreen.storyboard */,
 				0435DCF92643D5A9002DEA05 /* Info.plist */,
@@ -261,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D448FB267B753500A2BEB1 /* IndexTableViewCell.m in Sources */,
 				0435DD042643D6E3002DEA05 /* TBTableView.m in Sources */,
 				0435DCF02643D5A7002DEA05 /* ViewController.m in Sources */,
 				0435DCEA2643D5A7002DEA05 /* AppDelegate.m in Sources */,
@@ -414,7 +420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -435,7 +441,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZX.ToyBrickTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

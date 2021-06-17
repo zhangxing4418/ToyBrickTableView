@@ -10,6 +10,7 @@
 #import "TBTableViewCell.h"
 #import "TBValue1TableViewCell.h"
 #import "TBSplitLineTableViewCell.h"
+#import "IndexTableViewCell.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -90,6 +91,9 @@
         } else {
             [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
         }
+        [self.dataSource addObject:[[IndexTableViewCell buildCellDict] addIndexAction:^(NSInteger index) {
+            NSLog(@"%ld", index);
+        }]];
     }
 }
 
@@ -109,7 +113,7 @@
         [tableViewCell setBackgroundColor:[UIColor clearColor]];
         [tableViewCell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    [tableViewCell updateCellWithDict:dict];
+    [tableViewCell updateCellWithDict:dict index:indexPath.row];
     
     return tableViewCell;
 }
@@ -118,14 +122,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
     Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
+    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]] index:indexPath.row];
     return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
     Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
+    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]] index:indexPath.row];
     if (@available(iOS 11.0, *)) {
         return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
     }else {
