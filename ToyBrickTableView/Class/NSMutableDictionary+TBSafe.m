@@ -7,29 +7,7 @@
 
 #import "NSMutableDictionary+TBSafe.h"
 
-@implementation NSMutableDictionary (TBSafe)
-
-- (void)tb_setObj:(id)i forKey:(NSString *)key {
-    if (i != nil) {
-        self[key] = i;
-    }
-}
-
-- (void)tb_setString:(NSString *)i forKey:(NSString *)key {
-    [self setValue:i forKey:key];
-}
-
-- (void)tb_setBool:(BOOL)i forKey:(NSString *)key {
-    self[key] = @(i);
-}
-
-- (void)tb_setInteger:(NSInteger)i forKey:(NSString *)key {
-    self[key] = @(i);
-}
-
-- (void)tb_setFloat:(float)i forKey:(NSString *)key {
-    self[key] = @(i);
-}
+@implementation NSDictionary (TBSafe)
 
 - (NSString *)tb_stringForKey:(id)key {
     id value = [self objectForKey:key];
@@ -101,6 +79,32 @@
         return [value floatValue];
     }
     return 0;
+}
+
+@end
+
+@implementation NSMutableDictionary (TBSafe)
+
+- (void)tb_setObj:(id)i forKey:(NSString *)key {
+    if (i != nil) {
+        self[key] = i;
+    }
+}
+
+- (void)tb_setString:(NSString *)i forKey:(NSString *)key {
+    [self setValue:i forKey:key];
+}
+
+- (void)tb_setBool:(BOOL)i forKey:(NSString *)key {
+    self[key] = @(i);
+}
+
+- (void)tb_setInteger:(NSInteger)i forKey:(NSString *)key {
+    self[key] = @(i);
+}
+
+- (void)tb_setFloat:(float)i forKey:(NSString *)key {
+    self[key] = @(i);
 }
 
 @end
