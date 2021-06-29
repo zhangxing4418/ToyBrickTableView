@@ -33,13 +33,12 @@
     return __reuseIdentifier;
 }
 
-+ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [super cellRowHeightForDict:dict index:index];
++ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict {
     return 50;
 }
 
-+ (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [super cellRowEstimatedHeightForDict:dict index:index];
++ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
+    [super cellRowHeightForDict:dict index:index];
     return 50;
 }
 
@@ -59,6 +58,10 @@
         [self autoLayoutSubviews];
     }
     return self;
+}
+
+- (void)updateCellWithDict:(NSMutableDictionary *)dict {
+    self.label.text = [NSString stringWithFormat:@"第%ld行", index + 1];
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index {

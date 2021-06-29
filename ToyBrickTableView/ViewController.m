@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) TBTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, assign) NSInteger index;
 
 @end
 
@@ -95,6 +96,17 @@
             NSLog(@"%ld", index);
         }]];
     }
+    [self.dataSource addObject:[[TBValue1TableViewCell buildCellDictWithIndexConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index) {
+        titleLabel.text = [NSString stringWithFormat:@"第%ld项", index];
+        subTitleLabel.text = @"详情";
+        subTitleLabel.textColor = [UIColor lightGrayColor];
+        config.height = 45;
+        config.backgroundColor = [UIColor systemRedColor];
+        self.index = index;
+        return config;
+    }] addAction:^{
+        NSLog(@"%ld", self.index);
+    }]];
 }
 
 #pragma mark - UITableViewDataSource

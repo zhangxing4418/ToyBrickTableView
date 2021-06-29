@@ -13,6 +13,7 @@
 @interface TBValue1TableViewCellArguments : NSObject
 
 @property (nonatomic, copy) TBValue1TableViewCellConfig *(^configBlock) (UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config);
+@property (nonatomic, copy) TBValue1TableViewCellConfig *(^indexConfigBlock) (UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index);
 
 @end
 
@@ -34,11 +35,27 @@
     return [dict tb_floatForKey:@"height"];
 }
 
++ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
+    [super cellRowHeightForDict:dict index:index];
+    return [dict tb_floatForKey:@"height"];
+}
+
 + (NSMutableDictionary *)buildCellDictWithConfigBlock:(TBValue1TableViewCellConfig *(^)(UIImageView *, UILabel *, UILabel *, TBValue1TableViewCellConfig *))configBlock {
     NSMutableDictionary *dict = [super buildCellDict:[TBValue1TableViewCell class]];
     if (configBlock) {
         TBValue1TableViewCellArguments *arguments = [[TBValue1TableViewCellArguments alloc] init];
         arguments.configBlock = configBlock;
+        [dict tb_setObj:arguments forKey:@"Arguments"];
+    }
+    [dict tb_setFloat:44 forKey:@"height"];
+    return dict;
+}
+
++ (NSMutableDictionary *)buildCellDictWithIndexConfigBlock:(TBValue1TableViewCellConfig *(^)(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index))indexConfigBlock {
+    NSMutableDictionary *dict = [super buildCellDict:[TBValue1TableViewCell class]];
+    if (indexConfigBlock) {
+        TBValue1TableViewCellArguments *arguments = [[TBValue1TableViewCellArguments alloc] init];
+        arguments.indexConfigBlock = indexConfigBlock;
         [dict tb_setObj:arguments forKey:@"Arguments"];
     }
     [dict tb_setFloat:44 forKey:@"height"];
@@ -61,6 +78,25 @@
     TBValue1TableViewCellArguments *arguments = [dict objectForKey:@"Arguments"];
     if (arguments.configBlock) {
         TBValue1TableViewCellConfig *config = arguments.configBlock(self.imageView, self.textLabel, self.detailTextLabel, [[TBValue1TableViewCellConfig alloc] init]);
+        [dict tb_setFloat:config.height forKey:@"height"];
+        self.accessoryView = config.accessoryView;
+        self.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor whiteColor];
+        self.contentView.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor whiteColor];
+    }
+}
+
+- (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index {
+    [super updateCellWithDict:dict index:index];
+    TBValue1TableViewCellArguments *arguments = [dict objectForKey:@"Arguments"];
+    if (arguments.configBlock) {
+        TBValue1TableViewCellConfig *config = arguments.configBlock(self.imageView, self.textLabel, self.detailTextLabel, [[TBValue1TableViewCellConfig alloc] init]);
+        [dict tb_setFloat:config.height forKey:@"height"];
+        self.accessoryView = config.accessoryView;
+        self.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor whiteColor];
+        self.contentView.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor whiteColor];
+    }
+    if (arguments.indexConfigBlock) {
+        TBValue1TableViewCellConfig *config = arguments.indexConfigBlock(self.imageView, self.textLabel, self.detailTextLabel, [[TBValue1TableViewCellConfig alloc] init], [dict tb_integerForKey:@"index"]);
         [dict tb_setFloat:config.height forKey:@"height"];
         self.accessoryView = config.accessoryView;
         self.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor whiteColor];
