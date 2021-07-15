@@ -37,11 +37,6 @@
     return 50;
 }
 
-+ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [super cellRowHeightForDict:dict index:index];
-    return 50;
-}
-
 + (NSMutableDictionary *)buildCellDict {
     /**
      每次build都会将dict清空
@@ -61,15 +56,7 @@
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict {
-    self.label.text = [NSString stringWithFormat:@"第%ld行", index + 1];
-}
-
-- (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    /**
-     如果需要上一次dict中的数据，可以将数据先保存在类中，再在这里重新将数据写入dict中
-     */
-    [super updateCellWithDict:dict index:index];
-    self.label.text = [NSString stringWithFormat:@"第%ld行", index + 1];
+    self.label.text = [NSString stringWithFormat:@"第%ld行", [dict tb_integerForKey:@"index"] + 1];
 }
 
 - (void)autoLayoutSubviews {

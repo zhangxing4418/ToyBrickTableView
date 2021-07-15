@@ -19,10 +19,8 @@
 
 + (NSString *)reuseIdentifier;
 + (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict;
-+ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index;
 + (NSMutableDictionary *)buildCellDictWithConfigBlock:(TBValue1TableViewCellConfig *(^)(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config))configBlock;
 + (NSMutableDictionary *)buildCellDictWithIndexConfigBlock:(TBValue1TableViewCellConfig *(^)(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index))indexConfigBlock;
 - (void)updateCellWithDict:(NSMutableDictionary *)dict;
-- (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index;
 
 @end

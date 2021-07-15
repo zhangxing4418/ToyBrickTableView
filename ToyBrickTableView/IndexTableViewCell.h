@@ -11,9 +11,7 @@
 
 + (NSString *)reuseIdentifier;
 + (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict;
-+ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index;
 + (NSMutableDictionary *)buildCellDict;
 - (void)updateCellWithDict:(NSMutableDictionary *)dict;
-- (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index;
 
 @end

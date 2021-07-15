@@ -12,3 +12,9 @@
 - (id)tb_objectWithIndex:(NSUInteger)index;
 
 @end
+
+@interface NSMutableArray (TBCellDataSource)
+
+- (NSInteger)tb_addCellDataSource:(NSMutableDictionary *)dict;
+
+@end

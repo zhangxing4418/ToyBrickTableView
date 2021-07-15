@@ -18,3 +18,16 @@
 }
 
 @end
+
+@implementation NSMutableArray (TBCellDataSource)
+
+- (NSInteger)tb_addCellDataSource:(NSMutableDictionary *)dict {
+    if (dict != nil) {
+        [self addObject:dict];
+        [dict setObject:@(self.count - 1) forKey:@"index"];
+        return self.count - 1;
+    }
+    return -1;
+}
+
+@end

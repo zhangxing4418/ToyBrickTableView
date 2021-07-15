@@ -26,22 +26,12 @@
     return [self cellRowHeight];
 }
 
-+ (CGFloat)cellRowHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [dict tb_setInteger:index forKey:@"index"];
-    return [self cellRowHeightForDict:dict];
-}
-
 + (CGFloat)cellRowEstimatedHeight {
     return [self cellRowHeight];
 }
 
 + (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict {
     return [self cellRowEstimatedHeight];
-}
-
-+ (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [dict tb_setInteger:index forKey:@"index"];
-    return [self cellRowEstimatedHeightForDict:dict];
 }
 
 + (NSString *)dictKeyOfClassName {
@@ -68,11 +58,6 @@
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict {
-}
-
-- (void)updateCellWithDict:(NSMutableDictionary *)dict index:(NSInteger)index {
-    [dict tb_setInteger:index forKey:@"index"];
-    [self updateCellWithDict:dict];
 }
 
 @end

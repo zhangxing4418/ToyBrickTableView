@@ -76,33 +76,32 @@
 - (void)buildCellDataSource {
     [self.dataSource removeAllObjects];
     
-    for (int i = 0; i < 5; i++) {
-        [self.dataSource addObject:[[TBValue1TableViewCell buildCellDictWithConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config) {
-            titleLabel.text = @"第一项";
+    for (int i = 0; i < 15; i++) {
+        [self.dataSource tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config) {
+            titleLabel.text = @"标题";
             subTitleLabel.text = @"详情";
             subTitleLabel.textColor = [UIColor lightGrayColor];
             config.height = 45;
             config.backgroundColor = [UIColor systemRedColor];
             return config;
         }] addAction:^{
-            NSLog(@"这是第一项");
+            NSLog(@"展示详情");
         }]];
         if (@available(iOS 13.0, *)) {
-            [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+            [self.dataSource tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
         } else {
-            [self.dataSource addObject:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+            [self.dataSource tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
         }
-        [self.dataSource addObject:[[IndexTableViewCell buildCellDict] addIndexAction:^(NSInteger index) {
+        [self.dataSource tb_addCellDataSource:[[IndexTableViewCell buildCellDict] addIndexAction:^(NSInteger index) {
             NSLog(@"%ld", index);
         }]];
     }
-    [self.dataSource addObject:[[TBValue1TableViewCell buildCellDictWithIndexConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index) {
+    self.index = [self.dataSource tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithIndexConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index) {
         titleLabel.text = [NSString stringWithFormat:@"第%ld项", index];
         subTitleLabel.text = @"详情";
         subTitleLabel.textColor = [UIColor lightGrayColor];
         config.height = 45;
-        config.backgroundColor = [UIColor systemRedColor];
-        self.index = index;
+        config.backgroundColor = [UIColor systemBlueColor];
         return config;
     }] addAction:^{
         NSLog(@"%ld", self.index);
@@ -125,7 +124,7 @@
         [tableViewCell setBackgroundColor:[UIColor clearColor]];
         [tableViewCell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    [tableViewCell updateCellWithDict:dict index:indexPath.row];
+    [tableViewCell updateCellWithDict:dict];
     
     return tableViewCell;
 }
@@ -134,14 +133,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
     Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]] index:indexPath.row];
+    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
     return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
     Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]] index:indexPath.row];
+    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
     if (@available(iOS 11.0, *)) {
         return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
     }else {
