@@ -9,7 +9,7 @@
 #import "NSMutableDictionary+TBSafe.h"
 #import "NSArray+TBSafe.h"
 #import "NSMutableDictionary+TableViewCellAction.h"
-#import <MGSwipeTableCell.h>
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
 @interface TBTableViewCell : MGSwipeTableCell
 
