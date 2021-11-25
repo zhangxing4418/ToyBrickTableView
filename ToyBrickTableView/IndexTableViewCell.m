@@ -51,12 +51,24 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.label];
         [self autoLayoutSubviews];
+        [self configSwipe];
     }
     return self;
 }
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict {
     self.label.text = [NSString stringWithFormat:@"第%ld行", [dict tb_integerForKey:@"index"] + 1];
+}
+
+- (void)configSwipe {
+    self.rightButtons = @[[MGSwipeButton buttonWithTitle:@"删除" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        NSLog(@"删除");
+        return YES;
+    }], [MGSwipeButton buttonWithTitle:@"更多" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
+        NSLog(@"更多");
+        return NO;
+    }]];
+    self.rightSwipeSettings.transition = MGSwipeTransitionBorder;
 }
 
 - (void)autoLayoutSubviews {

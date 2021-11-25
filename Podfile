@@ -4,5 +4,6 @@ target 'ToyBrickTableView' do
 
 	pod 'MJRefresh'
 	pod 'DZNEmptyDataSet'
+  pod 'MGSwipeTableCell'
 
 end

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ToyBrickTableView"
-  spec.version      = "1.2.0"
+  spec.version      = "1.3.0"
   spec.summary      = "如搭积木般快速搭建TableView"
 
   # This description is used to generate tags and improve search results.
@@ -132,5 +132,6 @@ Pod::Spec.new do |spec|
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency "MJRefresh"
   spec.dependency "DZNEmptyDataSet"
+  spec.dependency "MGSwipeTableCell"
 
 end
