@@ -46,8 +46,8 @@
     return [self class];
 }
 
-+ (NSMutableDictionary *)buildCellDict:(Class)class {
-    return [NSMutableDictionary dictionaryWithObject:NSStringFromClass(class) forKey:[self dictKeyOfClassName]];
++ (NSMutableDictionary *)buildCellDict:(Class)cls {
+    return [NSMutableDictionary dictionaryWithObject:NSStringFromClass(cls) forKey:[self dictKeyOfClassName]];
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

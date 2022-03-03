@@ -20,7 +20,7 @@
 + (CGFloat)cellRowEstimatedHeightForDict:(NSMutableDictionary *)dict;
 
 + (Class)tableViewCellClassOfDict:(NSMutableDictionary *)dict;
-+ (NSMutableDictionary *)buildCellDict:(Class)class;
++ (NSMutableDictionary *)buildCellDict:(Class)cls;
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict;
 

@@ -1,7 +1,7 @@
 PODS:
   - DZNEmptyDataSet (1.8.1)
   - MGSwipeTableCell (1.6.11)
-  - MJRefresh (3.7.2)
+  - MJRefresh (3.7.5)
 
 DEPENDENCIES:
   - DZNEmptyDataSet
@@ -17,8 +17,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   MGSwipeTableCell: b804e4e450dee439c42250be90bd50458bf67fce
-  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
 
 PODFILE CHECKSUM: 92891d4da48768b897a150ebc33c3d1326054430
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
