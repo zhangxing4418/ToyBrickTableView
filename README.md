@@ -6,7 +6,7 @@
 - [x] 空白数据集显示
 - [x] Cell侧滑
 ## 如何安装
-```objc
+```ruby
 pod 'ToyBrickTableView'
 ```
 ## 如何使用
@@ -165,3 +165,5 @@ pod 'ToyBrickTableView'
     }]];
 }
 ```
+## END
+我是佛系程序员👨‍💻‍
