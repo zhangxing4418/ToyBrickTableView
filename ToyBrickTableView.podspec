@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ToyBrickTableView"
-  spec.version      = "1.3.2"
+  spec.version      = "1.3.3"
   spec.summary      = "如搭积木般快速搭建TableView"
 
   # This description is used to generate tags and improve search results.
