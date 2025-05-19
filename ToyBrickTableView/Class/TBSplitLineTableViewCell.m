@@ -10,6 +10,9 @@
 @interface TBSplitLineTableViewCell ()
 
 @property (nonatomic, strong) UIView *splitLineView;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat leftEdge;
+@property (nonatomic, assign) CGFloat rightEdge;
 
 @end
 
@@ -55,16 +58,17 @@
 
 - (void)updateCellWithDict:(NSMutableDictionary *)dict {
     UIColor *bgColor = [dict objectForKey:@"bgColor"];
-    CGFloat height = [dict tb_floatForKey:@"height"];
-    CGFloat leftEdge = [dict tb_floatForKey:@"leftEdge"];
-    CGFloat rightEdge = [dict tb_floatForKey:@"rightEdge"];
+    self.height = [dict tb_floatForKey:@"height"];
+    self.leftEdge = [dict tb_floatForKey:@"leftEdge"];
+    self.rightEdge = [dict tb_floatForKey:@"rightEdge"];
     if ([bgColor isEqual:[UIColor clearColor]]) {
         self.contentView.backgroundColor = [UIColor clearColor];
     }
     self.splitLineView.backgroundColor = bgColor;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.splitLineView.frame = CGRectMake(leftEdge, 0, CGRectGetWidth(self.contentView.frame) - leftEdge - rightEdge, height);
-    });
+}
+
+- (void)layoutSubviews {
+    self.splitLineView.frame = CGRectMake(self.leftEdge, 0, CGRectGetWidth(self.contentView.frame) - self.leftEdge - self.rightEdge, self.height);
 }
 
 @end
