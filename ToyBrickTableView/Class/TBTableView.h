@@ -18,6 +18,11 @@ typedef NS_ENUM(NSUInteger, TableEmptyType) {
 @interface TBTableView : UITableView
 
 /**
+ 列表的数据源数组，将需要展示的TBTableViewCell添加到此数组中
+ */
+@property (nonatomic, readonly, strong) NSMutableArray *dataSources;
+
+/**
  MJRefresh
  */
 @property (nonatomic, copy) void (^headerRefreshingBlock)(void);

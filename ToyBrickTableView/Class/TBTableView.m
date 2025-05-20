@@ -6,16 +6,28 @@
 //
 
 #import "TBTableView.h"
+#import "TBTableViewCell.h"
 #import <MJRefresh/MJrefresh.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
-@interface TBTableView ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface TBTableView ()<UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+
+@property (nonatomic, readwrite, strong) NSMutableArray *dataSources;
 
 @end
 
 @implementation TBTableView
 
+- (NSMutableArray *)dataSources {
+    if (!_dataSources) {
+        _dataSources = [NSMutableArray array];
+    }
+    return _dataSources;
+}
+
 - (void)initialize {
+    self.dataSource = self;
+    self.delegate = self;
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
@@ -212,6 +224,51 @@
     if (self.emptyTableDidTapButtonBlock) {
         self.emptyTableDidTapButtonBlock(button);
     }
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSources.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *dict = [self.dataSources tb_objectWithIndex:[indexPath row]];
+    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
+    NSString *reuseIdentifier = [tableViewCellClass reuseIdentifier];
+    
+    TBTableViewCell *tableViewCell = (TBTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (tableViewCell == nil) {
+        tableViewCell = [[tableViewCellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        [tableViewCell setBackgroundColor:[UIColor clearColor]];
+        [tableViewCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    [tableViewCell updateCellWithDict:dict];
+    
+    return tableViewCell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *dict = [self.dataSources tb_objectWithIndex:[indexPath row]];
+    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
+    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSources tb_objectWithIndex:[indexPath row]]];
+    return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *dict = [self.dataSources tb_objectWithIndex:[indexPath row]];
+    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
+    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSources tb_objectWithIndex:[indexPath row]]];
+    if (@available(iOS 11.0, *)) {
+        return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
+    }else {
+        return height <= 1 ? 0 : height;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *dict = [self.dataSources tb_objectWithIndex:[indexPath row]];
+    [dict executeAction];
 }
 
 @end

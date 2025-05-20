@@ -12,29 +12,19 @@
 #import "TBSplitLineTableViewCell.h"
 #import "IndexTableViewCell.h"
 
-@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ViewController ()
 
 @property (nonatomic, strong) TBTableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger index;
 
 @end
 
 @implementation ViewController
 
-- (NSMutableArray *)dataSource {
-    if (!_dataSource) {
-        _dataSource = [NSMutableArray array];
-    }
-    return _dataSource;
-}
-
 - (TBTableView *)tableView {
     if (!_tableView) {
         _tableView = [[TBTableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor whiteColor];
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
@@ -74,10 +64,10 @@
 }
 
 - (void)buildCellDataSource {
-    [self.dataSource removeAllObjects];
+    [self.tableView.dataSources removeAllObjects];
     
     for (int i = 0; i < 15; i++) {
-        [self.dataSource tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config) {
+        [self.tableView.dataSources tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config) {
             titleLabel.text = @"标题";
             subTitleLabel.text = @"详情";
             subTitleLabel.textColor = [UIColor lightGrayColor];
@@ -88,15 +78,15 @@
             NSLog(@"展示详情");
         }]];
         if (@available(iOS 13.0, *)) {
-            [self.dataSource tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+            [self.tableView.dataSources tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor systemGroupedBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
         } else {
-            [self.dataSource tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
+            [self.tableView.dataSources tb_addCellDataSource:[TBSplitLineTableViewCell buildCellDictWithBackgroundColor:[UIColor groupTableViewBackgroundColor] height:10 leftEdge:15 rightEdge:0]];
         }
-        [self.dataSource tb_addCellDataSource:[[IndexTableViewCell buildCellDict] addIndexAction:^(NSInteger index) {
+        [self.tableView.dataSources tb_addCellDataSource:[[IndexTableViewCell buildCellDict] addIndexAction:^(NSInteger index) {
             NSLog(@"%ld", index);
         }]];
     }
-    self.index = [self.dataSource tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithIndexConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index) {
+    self.index = [self.tableView.dataSources tb_addCellDataSource:[[TBValue1TableViewCell buildCellDictWithIndexConfigBlock:^TBValue1TableViewCellConfig *(UIImageView *imageView, UILabel *titleLabel, UILabel *subTitleLabel, TBValue1TableViewCellConfig *config, NSInteger index) {
         titleLabel.text = [NSString stringWithFormat:@"第%ld项", index];
         subTitleLabel.text = @"详情";
         subTitleLabel.textColor = [UIColor lightGrayColor];
@@ -106,51 +96,6 @@
     }] addAction:^{
         NSLog(@"%ld", self.index);
     }]];
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
-    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    NSString *reuseIdentifier = [tableViewCellClass reuseIdentifier];
-    
-    TBTableViewCell *tableViewCell = (TBTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    if (tableViewCell == nil) {
-        tableViewCell = [[tableViewCellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-        [tableViewCell setBackgroundColor:[UIColor clearColor]];
-        [tableViewCell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    }
-    [tableViewCell updateCellWithDict:dict];
-    
-    return tableViewCell;
-}
-
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
-    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
-    return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
-    Class tableViewCellClass = [TBTableViewCell tableViewCellClassOfDict:dict];
-    CGFloat height = [tableViewCellClass cellRowEstimatedHeightForDict:[self.dataSource tb_objectWithIndex:[indexPath row]]];
-    if (@available(iOS 11.0, *)) {
-        return (height == UITableViewAutomaticDimension || height >= 0) ? height : 0;
-    }else {
-        return height <= 1 ? 0 : height;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *dict = [self.dataSource tb_objectWithIndex:[indexPath row]];
-    [dict executeAction];
 }
 
 @end
